@@ -1,6 +1,8 @@
 #include "Enemy.h"
 #include "Engine.h"
 #include "Tower.h"
+#include "Wall.h"
+#include "IState.h"
 
 #include <iostream>
 
@@ -30,14 +32,15 @@ void Enemy::Update()
         if (OB->GetName() == "Tower")
         {
             Tower* TowerOB = (Tower*)OB;
-            std::cout << TowerOB->GetDamage();
             
         }
-        //else if (OB->GetName() == "Coin")
-        //{
-        //    Engine::Get()->DeleteObject(OB);
-        //    Engine::Get()->DeleteObject(this);
-        //}
+        else if (OB->GetName() == "Wall")
+        {
+            Wall* WallOB = (Wall*)OB;
+            WallOB->m_health -= m_dmg;
+            rect.x += -dir * 20;
+        }
+        
     }
 }
 

@@ -15,7 +15,7 @@ Engine* Engine::Get()
 	return s_Instance != nullptr ? s_Instance : s_Instance = new Engine();
 }
 
-Engine::Engine()
+Engine::Engine() : m_Running(false), LAST(0), NOW(0), m_deltaTime(0)
 {
 
 }
@@ -33,6 +33,10 @@ void Engine::Update()
 	SDL_RenderPresent(SDLClasses::GetRenderer());
 	// 1000 -> ms in seconds. 60 -> times a second
 	SDL_Delay(1000/60);
+
+	NOW = SDL_GetPerformanceCounter();
+	m_deltaTime = (NOW - LAST) / (double)SDL_GetPerformanceFrequency();
+	LAST = NOW;
 }
 
 const bool Engine::IsGameRunning() const
@@ -205,5 +209,10 @@ ObjectBase* Engine::GetClosestObject(ObjectBase* obj, const char* findOnly)
 	}
 
 	return closestObject;
+}
+
+double Engine::DT()
+{
+	return m_deltaTime;
 }
 

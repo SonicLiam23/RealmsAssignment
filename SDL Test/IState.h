@@ -1,11 +1,9 @@
 #pragma once
 class IState
 {
-private:
+public:
 	virtual void OnEnter() = 0;
 	virtual void OnExit() = 0;
 	virtual void Update() = 0;
-
-	friend class StateMachine;
 };
 

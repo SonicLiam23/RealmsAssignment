@@ -10,6 +10,7 @@ private:
 	static Engine* s_Instance;
 	bool m_Running;
 	std::vector<ObjectBase*> m_Objects;
+	double m_deltaTime, LAST, NOW;
 	Engine();
 
 public:
@@ -27,4 +28,6 @@ public:
 	// returns true if the 2 objects are colliding
 	bool IsColliding(ObjectBase* obj1, ObjectBase* obj2);
 	ObjectBase* GetClosestObject(ObjectBase* obj, const char* findOnly = "");
+
+	double DT();
 };

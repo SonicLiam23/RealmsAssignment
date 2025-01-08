@@ -7,3 +7,8 @@ void StateMachine::ChangeState(IState* change)
 	m_currentState = change;
 	m_currentState->OnEnter();
 }
+
+IState* StateMachine::GetState()
+{
+	return m_currentState;
+}

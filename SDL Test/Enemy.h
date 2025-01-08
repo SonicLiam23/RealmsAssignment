@@ -1,6 +1,6 @@
 #pragma once
 #include "ObjectBase.h"
-class Wall;
+#include "StateMachine.h"
 class Enemy : public ObjectBase
 {
 public:
@@ -13,9 +13,11 @@ private:
     void init();
 
     int speed;
+    int m_dmg;
+    int m_health;
     SDL_Rect* m_Target;
 
-    Wall* w;
+    StateMachine SM;
 
     // Inherited via ObjectBase
     void Execute() override;

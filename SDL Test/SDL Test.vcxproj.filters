@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Engine\Object">
       <UniqueIdentifier>{078137bf-dcce-4d1b-9bf7-5f10d1f8ab42}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\StateMachines">
+      <UniqueIdentifier>{0d2c72eb-eac9-42d0-adeb-ac900b60b42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\StateMachines">
+      <UniqueIdentifier>{7016e245-bb1c-4766-8abe-dc31207e23de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,6 +78,15 @@
     <ClCompile Include="Objects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="IState.cpp">
+      <Filter>Source Files\StateMachines</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Source Files\StateMachines</Filter>
+    </ClCompile>
+    <ClCompile Include="RealmsGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -117,6 +132,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Objects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyStates.h">
+      <Filter>Header Files\StateMachines</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>Header Files\StateMachines</Filter>
+    </ClInclude>
+    <ClInclude Include="IState.h">
+      <Filter>Header Files\StateMachines</Filter>
+    </ClInclude>
+    <ClInclude Include="RealmsGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

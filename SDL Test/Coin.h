@@ -3,6 +3,7 @@
 class Coin : public ObjectBase
 {
 public:
+	Coin();
 	void Update() override;
 	const char* GetName() override;
 

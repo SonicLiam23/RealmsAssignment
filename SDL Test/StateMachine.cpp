@@ -12,3 +12,12 @@ IState* StateMachine::GetState()
 {
 	return m_currentState;
 }
+
+void StateMachine::Update()
+{
+	m_currentState->Update();
+}
+
+StateMachine::StateMachine(IState* startState) : m_currentState(startState)
+{
+}

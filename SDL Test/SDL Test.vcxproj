@@ -83,7 +83,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.\lib\x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -102,7 +102,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.\lib\x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,7 +117,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -136,11 +136,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.\lib\x64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2.lib; SDL2main.lib; $(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="DayNightManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Farm.cpp" />
@@ -156,11 +157,12 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SDLClasses.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EnemyStates.h" />
+    <ClInclude Include="DayNightManager.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
@@ -177,6 +179,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SDLClasses.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Tower.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>

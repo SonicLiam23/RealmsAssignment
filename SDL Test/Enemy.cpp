@@ -3,7 +3,7 @@
 #include "Tower.h"
 #include "Wall.h"
 #include "IState.h"
-
+#include "Coin.h"
 #include <iostream>
 
 Enemy::Enemy(ObjectBase* Target) : m_Target(Target->GetPosition())
@@ -31,8 +31,21 @@ void Enemy::Update()
     {
         if (OB->GetName() == "Tower")
         {
-            Tower* TowerOB = (Tower*)OB;
-            
+            // isnt invincible
+            if (m_currentInv <= 0)
+            {
+                m_currentInv = m_invincibilityAfterHit;
+                Tower* TowerOB = (Tower*)OB;
+                m_health -= TowerOB->GetDamage();
+
+                if (m_health <= 0)
+                {
+                    Coin* newCoin = new Coin();
+                    newCoin->rect = this->rect;
+                    Engine::Get()->AddObject(newCoin);
+                    Engine::Get()->DeleteObject(this);
+                }
+            }
         }
         else if (OB->GetName() == "Wall")
         {
@@ -42,6 +55,12 @@ void Enemy::Update()
         }
         
     }
+
+    if (m_currentInv > 0)
+    {
+        m_currentInv -= Engine::Get()->DT();
+    }
+
 }
 
 const char* Enemy::GetName()
@@ -52,8 +71,11 @@ const char* Enemy::GetName()
 void Enemy::init()
 {
     speed = 2;
+    m_health = 5;
+    m_invincibilityAfterHit = 0.5;
 }
 
 void Enemy::Execute()
 {
 }
+

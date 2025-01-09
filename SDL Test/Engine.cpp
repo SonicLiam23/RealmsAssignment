@@ -27,8 +27,10 @@ void Engine::Update()
 	// call update on each object
 	for (ObjectBase* CurrObj : m_Objects)
 	{
-		CurrObj->Update();
+		bool testStatic = CurrObj->isStatic;
 		CurrObj->Render();
+		CurrObj->Update();
+		
 	}
 	SDL_RenderPresent(SDLClasses::GetRenderer());
 	// 1000 -> ms in seconds. 60 -> times a second
@@ -213,6 +215,6 @@ ObjectBase* Engine::GetClosestObject(ObjectBase* obj, const char* findOnly)
 
 double Engine::DT()
 {
+	
 	return m_deltaTime;
 }
-

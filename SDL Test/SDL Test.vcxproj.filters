@@ -87,6 +87,12 @@
     <ClCompile Include="RealmsGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="DayNightManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -134,9 +140,6 @@
     <ClInclude Include="Objects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyStates.h">
-      <Filter>Header Files\StateMachines</Filter>
-    </ClInclude>
     <ClInclude Include="StateMachine.h">
       <Filter>Header Files\StateMachines</Filter>
     </ClInclude>
@@ -144,6 +147,12 @@
       <Filter>Header Files\StateMachines</Filter>
     </ClInclude>
     <ClInclude Include="RealmsGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DayNightManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

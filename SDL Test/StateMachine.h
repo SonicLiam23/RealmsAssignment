@@ -9,5 +9,7 @@ private:
 public:
 	void ChangeState(IState* change);
 	IState* GetState();
+	void Update();
+	StateMachine(IState* startState);
 };
 

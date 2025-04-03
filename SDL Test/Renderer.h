@@ -7,6 +7,7 @@ class Renderer
 public:
 	static Renderer* Get();
 	Image* AddImage(const char* Path);
+	Image* AddImage(const char* Path, const char* Path2);
 	void DrawImage(Image* img, SDL_Rect* rect, int YOffset = 0);
 	ObjectBase* CameraCentre;
 	void SetCamera(ObjectBase* centre);

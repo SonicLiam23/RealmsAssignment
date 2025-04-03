@@ -15,6 +15,7 @@ IState* StateMachine::GetState()
 
 void StateMachine::Update()
 {
+	this;
 	m_currentState->Update();
 }
 

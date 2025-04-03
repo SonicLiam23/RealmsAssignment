@@ -7,13 +7,17 @@ public:
 	Tower();
 	int Upgrade();
 	int GetDamage();
+	int GetUpgradeCost();
+	int m_health;
 
 private:
-	int coinsToUpgrade;
+	int m_coinsToUpgrade;
 	int m_currLevel;
 	void Update() override;
 	const char* GetName() override;
 	int m_Damage;
+	float m_attackCooldown;
+	float m_currentCooldown;
 
 	static const char* m_UpgradeImgNames[];
 

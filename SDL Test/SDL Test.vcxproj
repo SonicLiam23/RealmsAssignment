@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -141,43 +141,61 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="CoinDisplay.cpp" />
     <ClCompile Include="DayNightManager.cpp" />
+    <ClCompile Include="DayState.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Farm.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateMachine.cpp" />
+    <ClCompile Include="HeavyArmourEnemy.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="img.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IState.cpp" />
+    <ClCompile Include="LightArmourEnemy.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="NightState.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="RealmsGame.cpp" />
+    <ClCompile Include="Realms.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SDLClasses.cpp" />
+    <ClCompile Include="StartState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tower.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CoinDisplay.h" />
     <ClInclude Include="DayNightManager.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Farm.h" />
+    <ClInclude Include="GameOverState.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateMachine.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="HeavyArmourEnemy.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="img.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IState.h" />
+    <ClInclude Include="LightArmourEnemy.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="Objects.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="RealmsGame.h" />
+    <ClInclude Include="Realms.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SDLClasses.h" />
+    <ClInclude Include="StartState.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Tower.h" />

@@ -1,8 +1,7 @@
 #pragma once
 #include "ObjectBase.h"
 #include "IState.h"
-#include "Engine.h"
-#include <iostream>
+
 
 class StateMachine;
 class DayNightManager : public ObjectBase
@@ -32,47 +31,35 @@ class DayState : public IState
 	float m_timer = 0;
 	const float dayTimeInS = 1;
 
-	void OnEnter() override
-	{
-		m_timer = 0;
-		// SET BACKGROUND TO DARK
-		std::cout << "DAY STATE\n";
-	}
-	void OnExit() override
-	{
+	void OnEnter() override;
 
-	}
-	void Update() override
-	{
-		m_timer += Engine::Get()->DT();
-	}
-	bool CanExit() override
-	{
-		return m_timer >= dayTimeInS;
-	}
+	void OnExit() override;
+	void Update() override;
+	bool CanExit() override;
 };
 
 class NightState : public IState
 {
 	float m_timer;
-	const float m_nightTimeInS = 2;
-	// Inherited via IState
-	void OnEnter() override
-	{
-		m_timer = 0;
-		std::cout << "NIGHT STATE\n";
-	}
-	void OnExit() override
-	{
+	const float m_nightTimeInS = 30;
 
-	}
-	void Update() override
-	{
-		m_timer += Engine::Get()->DT();
-	}
-	bool CanExit() override
-	{
-		return m_timer >= m_nightTimeInS;
-	}
+	float m_MaxEnemyCooldown = 2;
+	float m_EnemyCooldown = 0;
+	SDL_Rect* dest = new SDL_Rect({ 0,0,1,1 });
+
+	int m_enemiesSpawned;
+	int m_TotalEnemiesToSpawn = 4;
+	int m_normalEnemyChance = 100;
+	int m_lightArmourChance = 0;
+	int m_heavyArmourChance = 0;
+
+	int m_currentNight = 0;
+
+	// Inherited via IState
+	void OnEnter() override;
+
+	void OnExit() override;
+	void Update() override;
+	bool CanExit() override;
 };
 

@@ -1,57 +1,31 @@
-#include "SDLCLasses.h"
 #include "Text.h"
-#include <iostream>
 
-Text::Text(const char* fontPath, int fontSize, const char* text, SDL_Colour colour)
+Text::Text(SDL_Renderer* renderer, const char* Text) : m_Renderer(renderer), m_Text(Text), Rect({ 0, 0, 150, 50 })
 {
-	textRect = new SDL_Rect{ 10, 10, 20, 20 };
-	textTexture = showFont(fontPath, fontSize, text, colour);
-	SDL_QueryTexture(textTexture, nullptr, nullptr, &textRect->w, &textRect->h);
+	TTF_Init();
+	White = { 255, 255, 255 };
+	m_Font = TTF_OpenFont("Font/arial.ttf", 24);
+	Surface = TTF_RenderText_Solid(m_Font, Text, White);
+	Message = SDL_CreateTextureFromSurface(renderer, Surface);
 }
 
-
-void Text::DisplayText(int x, int y)
+void Text::Render()
 {
-	textRect->x = x;
-	textRect->y = y;
-	SDL_RenderCopy(SDLClasses::GetRenderer(), textTexture, nullptr, textRect);
+	SDL_RenderCopy(m_Renderer, Message, NULL, &Rect);
 }
 
-
-
-SDL_Texture* Text::showFont(const char* fontPath, int fontSize, const char* text, SDL_Colour colour)
+void Text::SetText(const char* NewText)
 {
-	TTF_Font* font = TTF_OpenFont(fontPath, fontSize);
+	SDL_FreeSurface(Surface);
+	SDL_DestroyTexture(Message);
 
-	if (!font)
-	{
-		std::cout << "No font for you!" << std::endl;
-	}
-
-	SDL_Surface* textSurface = TTF_RenderText_Solid(font, text, colour);
-
-	if (!textSurface)
-	{
-		std::cout << "No surface for you!" << std::endl;
-	}
-
-	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(SDLClasses::GetRenderer(), textSurface);
-
-	if (!textTexture)
-	{
-		std::cout << "No texture for you!" << std::endl;
-	}
-
-
-	SDL_FreeSurface(textSurface);
-
-	return textTexture;
-
-
+	Surface = TTF_RenderText_Solid(m_Font, NewText, White);
+	Message = SDL_CreateTextureFromSurface(m_Renderer, Surface);
 }
 
 Text::~Text()
 {
-	delete textRect;
-	SDL_DestroyTexture(textTexture);
+	TTF_CloseFont(m_Font);
+	SDL_FreeSurface(Surface);
+	SDL_DestroyTexture(Message);
 }

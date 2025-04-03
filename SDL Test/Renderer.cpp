@@ -22,6 +22,11 @@ Image* Renderer::AddImage(const char* Path)
     return m_StoredImages.at(Path);
 }
 
+Image* Renderer::AddImage(const char* Path, const char* Path2)
+{
+    return nullptr;
+}
+
 void Renderer::DrawImage(Image* img, SDL_Rect* rect, int YOffset)
 {
     SDL_Rect temp = *rect;

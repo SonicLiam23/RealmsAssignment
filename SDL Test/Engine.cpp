@@ -20,17 +20,51 @@ Engine::Engine() : m_Running(false), LAST(0), NOW(0), m_deltaTime(0)
 
 }
 
+void Engine::DeleteObjects()
+{
+	for (ObjectBase* obj : m_ObjsToDelete)
+	{
+		for (int i = 0; i < m_Objects.size(); ++i)
+		{
+			if (obj == m_Objects[i])
+			{
+				m_Objects.erase(m_Objects.begin() + i);
+				m_ObjsToDelete.pop_back();
+				delete obj;
+				break;
+			}
+		}
+	}
+
+	// if some object has been left over, erase it
+	if (m_ObjsToDelete.size() > 0)
+	{
+		for (ObjectBase* obj : m_ObjsToDelete)
+		{
+			m_ObjsToDelete.pop_back();
+		}
+	}
+
+	if (m_deleteAll)
+	{
+		m_deleteAll = false;
+		m_Objects.clear();
+	}
+}
+
 void Engine::Update()
 {
 	InputManager::Get()->Update();
 	SDL_RenderClear(SDLClasses::GetRenderer());
+
+	int testint = 0;
+	DeleteObjects();
 	// call update on each object
 	for (ObjectBase* CurrObj : m_Objects)
 	{
-		bool testStatic = CurrObj->isStatic;
-		CurrObj->Render();
 		CurrObj->Update();
-		
+		CurrObj->Render();	
+		testint++;
 	}
 	SDL_RenderPresent(SDLClasses::GetRenderer());
 	// 1000 -> ms in seconds. 60 -> times a second
@@ -39,11 +73,18 @@ void Engine::Update()
 	NOW = SDL_GetPerformanceCounter();
 	m_deltaTime = (NOW - LAST) / (double)SDL_GetPerformanceFrequency();
 	LAST = NOW;
+
+	
 }
 
 const bool Engine::IsGameRunning() const
 {
 	return m_Running;
+}
+
+void Engine::StopGame()
+{
+	m_Running = false;
 }
 
 void Engine::Init()
@@ -68,6 +109,7 @@ void Engine::Start()
 void Engine::Uninit()
 {
 	SDLClasses::DeleteAll();
+	m_ObjsToDelete = m_Objects;
 
 	SDL_Quit();
 }
@@ -79,16 +121,23 @@ void Engine::AddObject(ObjectBase* obj)
 
 void Engine::DeleteObject(ObjectBase* obj)
 {
-	for (int i = 0; i < m_Objects.size(); ++i)
-	{
-		if (obj == m_Objects[i])
-		{
-			m_Objects.erase(m_Objects.begin() + i);
-			break;
-		}
-	}
-	delete obj;
+	m_ObjsToDelete.push_back(obj);
 }
+
+void Engine::ClearScreen(bool forceDelete)
+{
+	for (ObjectBase* OB : m_Objects)
+	{
+		m_ObjsToDelete.push_back(OB);
+	}
+	if (forceDelete)
+	{
+		m_deleteAll = true;
+		DeleteObjects();
+	}
+}
+
+
 
 std::vector<ObjectBase*> Engine::GetAllCollisionsWith(ObjectBase* Obj)
 {
@@ -211,6 +260,20 @@ ObjectBase* Engine::GetClosestObject(ObjectBase* obj, const char* findOnly)
 	}
 
 	return closestObject;
+}
+
+std::vector<ObjectBase*> Engine::GetObjectsWithName(const char* nameToSearch)
+{
+	std::vector<ObjectBase*> objects;
+	for (ObjectBase* OB : m_Objects)
+	{
+		if (OB->GetName() == nameToSearch)
+		{
+			objects.push_back(OB);
+		}
+	}
+
+	return objects;
 }
 
 double Engine::DT()

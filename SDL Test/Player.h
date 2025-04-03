@@ -1,5 +1,7 @@
 #pragma once
 #include "ObjectBase.h"
+
+class Mix_Chunk; class GameStateMachine;
 class Player : public ObjectBase
 {
 public:
@@ -10,10 +12,12 @@ public:
 	const char* GetName() override;
 	void Render() override;
 	static int coins;
-
-private:
+	void SetGameStateMachine(GameStateMachine* machine);
 	
 
+private:
+	GameStateMachine* FSM;
+	Mix_Chunk* sound;
 	// Inherited via ObjectBase
 	void Execute() override;
 

@@ -6,6 +6,10 @@ ObjectBase::ObjectBase(SDL_Rect pos) : m_img(nullptr), rect(pos), CollisionEnabl
 
 }
 
+ObjectBase::~ObjectBase()
+{
+}
+
 void ObjectBase::Render()
 {
 	if (m_img != nullptr)

@@ -16,6 +16,16 @@ Enemy::Enemy(SDL_Rect* Target) : m_Target(Target)
     init();
 }
 
+float Enemy::GetInvincibilityTime()
+{
+    return m_invincibilityAfterHit;
+}
+
+int Enemy::GetDamage()
+{
+    return m_dmg;
+}
+
 void Enemy::Update()
 {
     // enemies should just chase the player for now
@@ -29,30 +39,6 @@ void Enemy::Update()
 
     for (ObjectBase* OB : Engine::Get()->GetAllCollisionsWith(this))
     {
-        if (OB->GetName() == "Tower")
-        {
-            // isnt invincible
-            if (m_currentInv <= 0)
-            {
-                m_currentInv = m_invincibilityAfterHit;
-                Tower* TowerOB = (Tower*)OB;
-                m_health -= TowerOB->GetDamage();
-
-                if (m_health <= 0)
-                {
-                    Coin* newCoin = new Coin();
-                    newCoin->rect = this->rect;
-                    Engine::Get()->AddObject(newCoin);
-                    Engine::Get()->DeleteObject(this);
-                }
-            }
-        }
-        else if (OB->GetName() == "Wall")
-        {
-            Wall* WallOB = (Wall*)OB;
-            WallOB->m_health -= m_dmg;
-            rect.x += -dir * 20;
-        }
         
     }
 
@@ -70,9 +56,11 @@ const char* Enemy::GetName()
 
 void Enemy::init()
 {
+    SetImage("Enemy.bmp");
     speed = 2;
-    m_health = 5;
+    m_health = 4;
     m_invincibilityAfterHit = 0.5;
+    m_dmg = 10;
 }
 
 void Enemy::Execute()

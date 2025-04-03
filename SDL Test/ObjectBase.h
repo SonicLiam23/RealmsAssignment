@@ -1,8 +1,6 @@
 #pragma once
 #include "SDL_rect.h"
 class Image;
-
-
 /*
 * Base for the objects
 * each object will need an update, render, start, end and a function to return its own name
@@ -13,6 +11,7 @@ class ObjectBase
 {
 public:
 	ObjectBase(SDL_Rect pos = { 0, 0, 320, 320 });
+	~ObjectBase();
 	virtual void Update() = 0;
 	virtual void Render();
 	virtual const char* GetName() = 0;

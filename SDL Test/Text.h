@@ -1,20 +1,23 @@
 #pragma once
 #include "SDL_ttf.h"
-#include "SDL.h"
-#include <string>
 
 class Text
 {
 public:
-	Text(const char* fontPath, int fontSize, const char* text, SDL_Colour colour);
+	Text(SDL_Renderer* renderer, const char* Text);
+	void Render();
+	void SetText(const char* NewText);
 	~Text();
-	void DisplayText(int x, int y);
-	SDL_Texture* showFont(const char* fontPath, int fontSize, const char* text, SDL_Colour colour);
 
 
 private:
-	SDL_Texture* textTexture;
-	SDL_Rect* textRect;
+	SDL_Renderer* m_Renderer;
+	TTF_Font* m_Font;
+	SDL_Color White;
+	SDL_Surface* Surface;
+	const char* m_Text;
+	SDL_Texture* Message;
+	const SDL_Rect Rect;
 
 };
 

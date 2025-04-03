@@ -31,6 +31,12 @@
     <Filter Include="Header Files\StateMachines">
       <UniqueIdentifier>{7016e245-bb1c-4766-8abe-dc31207e23de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\StateMachines\TimeStates">
+      <UniqueIdentifier>{77c4febe-240b-4c92-8ab4-680e6555292f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\StateMachines\GameStates">
+      <UniqueIdentifier>{d1e385fa-47a2-47dc-bb3b-3464ab7e0f53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,14 +90,44 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files\StateMachines</Filter>
     </ClCompile>
-    <ClCompile Include="RealmsGame.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>Source Files\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="DayNightManager.cpp">
+    <ClCompile Include="CoinDisplay.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LightArmourEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Realms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DayState.cpp">
+      <Filter>Source Files\StateMachines\TimeStates</Filter>
+    </ClCompile>
+    <ClCompile Include="HeavyArmourEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NightState.cpp">
+      <Filter>Source Files\StateMachines\TimeStates</Filter>
+    </ClCompile>
+    <ClCompile Include="DayNightManager.cpp">
+      <Filter>Source Files\StateMachines\TimeStates</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Source Files\StateMachines\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files\StateMachines\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStateMachine.cpp">
+      <Filter>Source Files\StateMachines\GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="StartState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverState.cpp">
+      <Filter>Source Files\StateMachines\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,13 +182,37 @@
     <ClInclude Include="IState.h">
       <Filter>Header Files\StateMachines</Filter>
     </ClInclude>
-    <ClInclude Include="RealmsGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Text.h">
       <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="DayNightManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinDisplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightArmourEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeavyArmourEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Realms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StartState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

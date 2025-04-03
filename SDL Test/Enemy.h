@@ -5,17 +5,19 @@ class Enemy : public ObjectBase
 public:
     Enemy(ObjectBase* Target);
     Enemy(SDL_Rect* Target);
+    float GetInvincibilityTime();
+    int m_health;
+    int GetDamage();
 private:
     // Inherited via ObjectBase
     void Update() override;
     const char* GetName() override;
-    void init();
+    virtual void init();
 
 
-
+protected:
     int speed;
     int m_dmg;
-    int m_health;
     SDL_Rect* m_Target;
 
     float m_invincibilityAfterHit;

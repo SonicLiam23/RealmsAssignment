@@ -15,6 +15,7 @@ void DayNightManager::Update()
     }
     else
     {
+
         if (m_FSM->GetState()->CanExit())
         {
             m_FSM->ChangeState(m_states[day]);
@@ -38,7 +39,7 @@ DayNightManager::DayNightManager()
     m_states[day] = new DayState();
     m_states[night] = new NightState();
     m_FSM = new StateMachine(m_states[0]);
-    m_state = day;
+    m_state = night;
 }
 
 DayNightManager::~DayNightManager()
